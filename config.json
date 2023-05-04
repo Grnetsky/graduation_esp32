@@ -1,0 +1,11 @@
+{
+    "wifi": {
+        "SSID": "HONOR X10",
+        "password": "888888888",
+        "attempts": 3,
+        "delay_in_msec": 2000
+    },
+    "server": "ws://192.168.43.127:8008/room/",
+    "socket_delay_ms": 5,
+    "sid": 1
+}
