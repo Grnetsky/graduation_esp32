@@ -2,11 +2,11 @@ import network as net
 import uasyncio as a
 import json
 from random import randint
-from machine import Pin
+from machine import Pin,soft_reset
 import gc
 import main_func
 from async_websocket_client import AsyncWebsocketClient
-
+import dispatchFunc
 # trying to read config --------------------------------------------------------
 # if config file format is wrong, exception is raised and program will stop
 print("Trying to load config...")
@@ -135,22 +135,7 @@ async def read_loop():
                 data = await ws.recv()
                 print("Data: " + str(data) + "; " + str(mes_count))
                 # 每十秒断开一次
-                if(data=="前进开始"):
-                    main_func.front(True)
-                elif(data=="前进结束"):
-                    main_func.front(False)
-                elif(data=="后退开始"):
-                    main_func.back(True)
-                elif(data=="后退结束"):
-                    main_func.back(False)
-                elif(data=="向左开始"):
-                    main_func.left(True)
-                elif(data=="向左结束"):
-                    main_func.left(False)
-                elif(data=="向右开始"):
-                    main_func.right(True)
-                elif(data=="向右结束"):
-                    main_func.right(False)
+                dispatchFunc.main(data)
                 if data is not None:
                     await lock.acquire()
                     data_from_ws.append(data)
