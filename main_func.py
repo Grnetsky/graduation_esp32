@@ -74,3 +74,9 @@ def right(state):
     else:
         print("小车向右结束")
         p12.duty(0)
+
+def autoMode():
+    pass
+
+def manualMode():
+    pass
