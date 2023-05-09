@@ -18,6 +18,10 @@ def main(data):
         main_func.right(True)
     elif(data=="向右停止"):
         main_func.right(False)
+    elif(data=="autoMode"):
+        main_func.autoMode()
+    elif(data=="manualMode"):
+        main_func.manualMode()
     elif(data=="小车已经离线"):
         soft_reset()
     elif(data.startswith("设置速度")):

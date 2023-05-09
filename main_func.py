@@ -24,59 +24,56 @@ sp = Speed()
 
 def front(state):
     if(state):
-        print("小车向前开始 速度：",sp.getSpeed())
         p12.duty(sp.getSpeed())
         p14.duty(0)
         
         p26.duty(sp.getSpeed())
         p27.duty(0)
     else:
-        print("小车向前结束")
         p12.duty(0)
         p26.duty(0)
 
 """后退"""
 def back(state):
     if(state):
-        print("小车后退开始")
         p12.duty(0)
         p14.duty(sp.getSpeed())
         
         p26.duty(0)
         p27.duty(sp.getSpeed())
     else:
-        print("小车后退结束")
         p14.duty(0)
         p27.duty(0)
 
 """向左"""
 def left(state):
     if(state):
-        print("小车向左开始")
         p12.duty(0)
         p14.duty(0)
 
         p26.duty(sp.getSpeed())
         p27.duty(0)
     else:
-        print("小车向左结束")
         p26.duty(0)
 
 """向右"""
 def right(state):
     if(state):
-        print("小车向右开始")
         p12.duty(sp.getSpeed())
         p14.duty(0)
         
         p26.duty(0)
         p27.duty(0)
     else:
-        print("小车向右结束")
         p12.duty(0)
 
+def stop():
+    p12.duty(0)
+    p14.duty(0)
+    p26.duty(0)
+    p27.duty(0)
+    
 def autoMode():
     pass
-
 def manualMode():
     pass

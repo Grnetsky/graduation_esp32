@@ -93,12 +93,15 @@ async def blink_loop():
             if await ws.open():
                 await ws.send('SOS!')
             print("SOS!", end=' ')
-
+                
             # lock data archive
             await lock.acquire()
             if data_from_ws:
                 for item in data_from_ws:
                     print("\nData from ws: {}".format(item))
+                    print(item)
+                    if(item=='手机已连接'):
+                        await ws.send("ok")
                 data_from_ws = []
             lock.release()
             gc.collect()
