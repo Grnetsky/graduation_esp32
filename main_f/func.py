@@ -7,6 +7,7 @@ import gc
 import main_func
 from async_websocket_client import AsyncWebsocketClient
 import dispatchFunc
+from upload import uploadData
 # trying to read config --------------------------------------------------------
 # if config file format is wrong, exception is raised and program will stop
 print("Trying to load config...")
@@ -92,6 +93,7 @@ async def blink_loop():
         if ws is not None:
             if await ws.open():
                 await ws.send('SOS!')
+                await ws.send(uploadData())
             print("SOS!", end=' ')
                 
             # lock data archive
